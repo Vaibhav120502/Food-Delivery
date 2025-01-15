@@ -24,10 +24,24 @@ const Orders = ({ url }) => {
     }, [])
 
     return (
-        <div>
-            orders
+        <div className="orders">
+            <h2>Orders List</h2>
+            {orders.length === 0 ? (
+                <p>No orders available</p>
+            ) : (
+                <div className="orders-table">
+                    {orders.map((order, index) => (
+                        <div key={index} className="order-item">
+                            <p><b>Order ID:</b> {order.id}</p>
+                            <p><b>Customer Name:</b> {order.customerName}</p>
+                            <p><b>Total:</b> ${order.total}</p>
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
-    )
+    );
+    
 }
 
 export default Orders
